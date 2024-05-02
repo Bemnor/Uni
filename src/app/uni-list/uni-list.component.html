@@ -1,0 +1,47 @@
+<!-- searchBar -->
+<div class="container center">
+  <input
+    type="text"
+    class="form-control rounded"
+    id="searchBar"
+    placeholder="Search for University..."
+    [(ngModel)]="searchText"
+  />
+  <hr *ngIf="searchText !== ''" />
+</div>
+
+<div class="container">
+  <!-- Page buttons -->
+  <div class="row align-items-center" *ngIf="searchText === ''">
+    <div class="col right">
+      <button
+        [disabled]="currentUnisCount === 0"
+        class="btn btn-danger"
+        (click)="onBackPage()"
+      >
+        Back
+      </button>
+    </div>
+    <div class="col container align-items-center" id="PageNumber">
+      <strong
+        >{{ currentUnisCount / UnisToShow }} /
+        {{ UniLength / UnisToShow }}</strong
+      >
+    </div>
+    <div class="col">
+      <button
+        [disabled]="currentUnisCount >= UniLength"
+        class="btn btn-danger"
+        (click)="onNextPage()"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+  <!-- the List of unis -->
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let uni of getUnis; let i = index">
+      <app-uni [uni]="uni"></app-uni>
+    </li>
+  </ul>
+</div>

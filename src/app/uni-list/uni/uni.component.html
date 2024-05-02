@@ -1,0 +1,61 @@
+<div class="row align-items-center">
+  <div class="col-auto">
+    <h4>{{ uni.name }}</h4>
+  </div>
+
+  <div class="col-auto">
+    <p id="province">
+      {{ uni["state-province"] }}
+    </p>
+  </div>
+
+  <div class="col container right">
+    <div class="row align-items-end">
+      <div class="col"></div>
+      <div class="col">
+        <p>
+          <strong id="country">[{{ uni.country }}]</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col col-lg-6">
+    <h6>Domains:</h6>
+    <a
+      class="btn btn-info uni-btn"
+      style="cursor: pointer"
+      *ngFor="let dom of uni.domains"
+      href="https://{{ dom }}"
+    >
+      {{ dom }}
+    </a>
+  </div>
+  <div class="col col-lg-4">
+    <h6>Web Pages:</h6>
+    <a
+      *ngFor="let webp of uni.web_pages"
+      class="btn btn-info uni-btn truncate"
+      style="cursor: pointer"
+      href="{{ webp }}"
+    >
+      {{ webp }}
+      <br />
+    </a>
+  </div>
+  <!-- Favourite button -->
+  <div class="col-lg-2 container right">
+    <button
+      class="btn btn-dark"
+      [ngClass]="{
+        active: !uni.Favourited
+      }"
+      id="btnFavourite"
+      (click)="onFavouriteClicked()"
+    >
+      <strong *ngIf="uni.Favourited">UnFavourite</strong>
+      <strong *ngIf="!uni.Favourited">Favourite</strong>
+    </button>
+  </div>
+</div>

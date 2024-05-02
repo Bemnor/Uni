@@ -1,0 +1,15 @@
+<div class="container list-group rounded">
+  <h4 id="Title">Favourited Universities</h4>
+  <ul class="list-group">
+    <li *ngFor="let fav of favUnis" class="list-group-item">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <button (click)="onUnFavourite(fav)" class="btn">X</button>
+        </div>
+        <div class="col">
+          <h6>{{ fav.name }}</h6>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
